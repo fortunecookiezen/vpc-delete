@@ -7,7 +7,7 @@ Boto3 Version: 1.7.50
 
 """
 
-import boto3
+import boto3, sys
 from botocore.exceptions import ClientError
 
 
@@ -251,6 +251,10 @@ def main(profile):
 
 
 if __name__ == "__main__":
-
-  main(profile = '<YOUR_PROFILE>')
+  if(len(sys.argv)) >= 2:
+    try: 
+      main(profile = sys.argv[1])
+    except Exception as e: print(e)
+  else: 
+    print("you must provide an account profile name")
 
