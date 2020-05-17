@@ -180,7 +180,7 @@ def get_regions(ec2):
   return regions
 
 
-def main():
+def main(profile):
   """
   Do the work..
 
@@ -197,7 +197,7 @@ def main():
   # AWS Credentials
   # https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html
 
-  session = boto3.Session()
+  session = boto3.Session(profile_name=profile)
   region = session.region_name
   ec2 = session.client('ec2')
 
